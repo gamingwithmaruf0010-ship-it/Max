@@ -18,7 +18,7 @@ from urllib.parse import urljoin
 # ==========================================
 # Configuration (Token & Owner ID)
 # ==========================================
-TOKEN = "8708411820:AAFuEfwkzC-KRWrPv0kqkqnRQCoF_HUHcg4"
+TOKEN = "8098536395:AAEUMn8oZCVh8WFCgOVpmFie-n2V1JgPaBs"
 BASE_URL = f"https://api.telegram.org/bot{TOKEN}"
 FILE_URL = f"https://api.telegram.org/file/bot{TOKEN}/"
 
