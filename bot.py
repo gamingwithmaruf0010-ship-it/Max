@@ -1784,7 +1784,7 @@ def system_settings_keyboard():
          {"text": "User Management", "icon_custom_emoji_id": "5193063022226086560", "callback_data": "user_management", "style": "primary"}], 
         [{"text": "Panel MANAGEMENT", "icon_custom_emoji_id": "5336879280578138635", "callback_data": "manage_panels", "style": "danger"},
          {"text": "Subscription", "icon_custom_emoji_id": "5190899075968441286", "callback_data": "dummy_alert", "style": "success"}],
-        [{"text": "Ariyan Control", "icon_custom_emoji_id": "5193100774988617665", "callback_data": "dxa_control", "style": "primary"},
+        [{"text": "Maruf Control", "icon_custom_emoji_id": "5193100774988617665", "callback_data": "max_control", "style": "primary"},
          {"text": "Premium Emoji", "icon_custom_emoji_id": "5352552689983067014", "callback_data": "manage_emojis", "style": "success"}],
         [{"text": "Menu Design", "icon_custom_emoji_id": "5190751148704833975", "callback_data": "menu_design_list", "style": "primary"}],
         [{"text": "Back", "icon_custom_emoji_id": "5267490665117275176", "callback_data": "back_to_admin", "style": "danger"}]
@@ -1914,21 +1914,21 @@ def specific_fw_group_keyboard(idx):
     kb.append([{"text": "Back to Groups", "icon_custom_emoji_id": "5267490665117275176", "callback_data": "manage_otp_groups", "style": "primary"}])
     return {"inline_keyboard": kb}
 
-def dxa_control_keyboard():
+def max_control_keyboard():
     w_status = "ON" if bot_settings["withdraw_on"] else "OFF"
     sup_status = "ON" if bot_settings.get("support_link") else "OFF"
     grp_status = "ON" if bot_settings.get("w_group") else "OFF"
     return {"inline_keyboard": [
-        [{"text": f"WITHDRAW: {w_status}", "icon_custom_emoji_id": "5348469219761626211", "callback_data": "dxa_toggle_w", "style": "primary"}],
-        [{"text": f"MIN WITHDRAW: {bot_settings['min_withdraw']}", "icon_custom_emoji_id": "5352877703043258544", "callback_data": "dxa_min_w", "style": "success"},
-         {"text": f"OTP REWARD: {bot_settings['otp_reward']}", "icon_custom_emoji_id": "5190576863226933563", "callback_data": "dxa_otp_r", "style": "primary"}],
-        [{"text": f"REFER REWARD: {bot_settings['refer_reward']}", "icon_custom_emoji_id": "5420396762189831222", "callback_data": "dxa_ref_r", "style": "success"},
-         {"text": f"COOLDOWN: {bot_settings['cooldown']}s", "icon_custom_emoji_id": "5337172996211648018", "callback_data": "dxa_cool", "style": "primary"}],
-        [{"text": f"NUM/REQ: {bot_settings['num_req']}", "icon_custom_emoji_id": "5337132498965010628", "callback_data": "dxa_num_req", "style": "success"},
-         {"text": f"NUM/SHARE: {bot_settings['num_share']}", "icon_custom_emoji_id": "5352862640592949843", "callback_data": "dxa_num_share", "style": "primary"}],
-        [{"text": f"SUPPORT LINK: {sup_status}", "icon_custom_emoji_id": "5420145051336485498", "callback_data": "dxa_sup_link", "style": "success"},
+        [{"text": f"WITHDRAW: {w_status}", "icon_custom_emoji_id": "5348469219761626211", "callback_data": "max_toggle_w", "style": "primary"}],
+        [{"text": f"MIN WITHDRAW: {bot_settings['min_withdraw']}", "icon_custom_emoji_id": "5352877703043258544", "callback_data": "max_min_w", "style": "success"},
+         {"text": f"OTP REWARD: {bot_settings['otp_reward']}", "icon_custom_emoji_id": "5190576863226933563", "callback_data": "max_otp_r", "style": "primary"}],
+        [{"text": f"REFER REWARD: {bot_settings['refer_reward']}", "icon_custom_emoji_id": "5420396762189831222", "callback_data": "max_ref_r", "style": "success"},
+         {"text": f"COOLDOWN: {bot_settings['cooldown']}s", "icon_custom_emoji_id": "5337172996211648018", "callback_data": "max_cool", "style": "primary"}],
+        [{"text": f"NUM/REQ: {bot_settings['num_req']}", "icon_custom_emoji_id": "5337132498965010628", "callback_data": "max_num_req", "style": "success"},
+         {"text": f"NUM/SHARE: {bot_settings['num_share']}", "icon_custom_emoji_id": "5352862640592949843", "callback_data": "max_num_share", "style": "primary"}],
+        [{"text": f"SUPPORT LINK: {sup_status}", "icon_custom_emoji_id": "5420145051336485498", "callback_data": "max_sup_link", "style": "success"},
          {"text": "W. METHODS", "icon_custom_emoji_id": "5190899075968441286", "callback_data": "manage_w_methods", "style": "primary"}],
-        [{"text": f"W. GROUP: {grp_status}", "icon_custom_emoji_id": "5420517437885943844", "callback_data": "dxa_w_group", "style": "success"},
+        [{"text": f"W. GROUP: {grp_status}", "icon_custom_emoji_id": "5420517437885943844", "callback_data": "max_w_group", "style": "success"},
          {"text": "BACK", "icon_custom_emoji_id": "5267490665117275176", "callback_data": "system_settings", "style": "danger"}]
     ]}
 
@@ -1937,7 +1937,7 @@ def w_methods_keyboard():
     for idx, m in enumerate(bot_settings["w_methods"]):
         kb.append([{"text": f"Delete: {m}", "icon_custom_emoji_id": "5420130255174145507", "callback_data": f"del_wm_{idx}", "style": "danger"}])
     kb.append([{"text": "Add Method", "icon_custom_emoji_id": "5420323438508155202", "callback_data": "add_wm", "style": "success"}])
-    kb.append([{"text": "Back", "icon_custom_emoji_id": "5267490665117275176", "callback_data": "dxa_control", "style": "primary"}])
+    kb.append([{"text": "Back", "icon_custom_emoji_id": "5267490665117275176", "callback_data": "max_control", "style": "primary"}])
     return {"inline_keyboard": kb}
 
 def typed_panels_list_keyboard(p_type):
@@ -2836,7 +2836,7 @@ def handle_message(msg):
             del temp_data[chat_id]
             return
 
-        elif state == "set_dxa":
+        elif state == "set_max":
             msg_id = temp_data[chat_id]["msg_id"]
             key = temp_data[chat_id]["key"]
             try:
@@ -2845,10 +2845,10 @@ def handle_message(msg):
                 else: bot_settings[key] = text
                 save_db()
                 delete_message(chat_id, msg["message_id"])
-                edit_message(chat_id, msg_id, render_body_text("🕹 <b>DXA CONTROL PANEL</b>"), reply_markup=dxa_control_keyboard())
+                edit_message(chat_id, msg_id, render_body_text("🕹 <b>MAX CONTROL PANEL</b>"), reply_markup=max_control_keyboard())
             except:
                 delete_message(chat_id, msg["message_id"])
-                edit_message(chat_id, msg_id, render_body_text("🕹 <b>DXA CONTROL PANEL</b>\n\n❌ Invalid value!"), reply_markup=dxa_control_keyboard())
+                edit_message(chat_id, msg_id, render_body_text("🕹 <b>MAX CONTROL PANEL</b>\n\n❌ Invalid value!"), reply_markup=max_control_keyboard())
             del user_states[chat_id]
             del temp_data[chat_id]
             return
@@ -3400,10 +3400,10 @@ def handle_callback(call):
         except:
             answer_callback(call["id"], "❌ Error refreshing code!", show_alert=True)
 
-    elif data == "cancel_dxa_edit":
+    elif data == "cancel_max_edit":
         if chat_id in user_states: del user_states[chat_id]
         if chat_id in temp_data: del temp_data[chat_id]
-        edit_message(chat_id, msg_id, render_body_text("🕹 <b>DXA CONTROL PANEL</b>"), reply_markup=dxa_control_keyboard())
+        edit_message(chat_id, msg_id, render_body_text("🕹 <b>MAX CONTROL PANEL</b>"), reply_markup=max_control_keyboard())
         
     elif data == "dummy_alert":
         answer_callback(call["id"], "This feature will be added later!", show_alert=True)
@@ -4455,14 +4455,14 @@ def handle_callback(call):
             if wait_msg_id: delete_message(chat_id, wait_msg_id)
             send_message(chat_id, render_body_text(f"❌ <b>Connection Failed!</b>\nError: {html.escape(str(e))}"))
 
-    elif data == "dxa_control":
+    elif data == "max_control":
         if chat_id in user_states: del user_states[chat_id]
-        edit_message(chat_id, msg_id, render_body_text("🕹 <b>DXA CONTROL PANEL</b>"), reply_markup=dxa_control_keyboard())
+        edit_message(chat_id, msg_id, render_body_text("🕹 <b>MAX CONTROL PANEL</b>"), reply_markup=max_control_keyboard())
 
-    elif data == "dxa_toggle_w":
+    elif data == "max_toggle_w":
         bot_settings["withdraw_on"] = not bot_settings["withdraw_on"]
         save_db()
-        edit_message(chat_id, msg_id, render_body_text("🕹 <b>DXA CONTROL PANEL</b>"), reply_markup=dxa_control_keyboard())
+        edit_message(chat_id, msg_id, render_body_text("🕹 <b>MAX CONTROL PANEL</b>"), reply_markup=max_control_keyboard())
 
     elif data == "manage_w_methods":
         edit_message(chat_id, msg_id, render_body_text("💳 <b>WITHDRAWAL METHODS</b>\n\nManage your withdrawal methods below:"), reply_markup=w_methods_keyboard())
@@ -4480,13 +4480,13 @@ def handle_callback(call):
             answer_callback(call["id"], "✅ Method deleted!", show_alert=True)
             edit_message(chat_id, msg_id, render_body_text("💳 <b>WITHDRAWAL METHODS</b>\n\nManage your withdrawal methods below:"), reply_markup=w_methods_keyboard())
 
-    elif data.startswith("dxa_"):
-        key = data.replace("dxa_", "")
+    elif data.startswith("max_"):
+        key = data.replace("max_", "")
         key_map = {"min_w": "min_withdraw", "otp_r": "otp_reward", "ref_r": "refer_reward", "cool": "cooldown", "num_req": "num_req", "num_share": "num_share", "sup_link": "support_link", "w_group": "w_group"}
         if key in key_map:
             temp_data[chat_id] = {"msg_id": msg_id, "key": key_map[key]}
-            user_states[chat_id] = "set_dxa"
-            cancel_kb = {"inline_keyboard": [[{"text": "Cancel", "icon_custom_emoji_id": "5267490665117275176", "callback_data": "cancel_dxa_edit", "style": "danger"}]]}
+            user_states[chat_id] = "set_max"
+            cancel_kb = {"inline_keyboard": [[{"text": "Cancel", "icon_custom_emoji_id": "5267490665117275176", "callback_data": "cancel_max_edit", "style": "danger"}]]}
             edit_message(chat_id, msg_id, render_body_text(f"📝 Please send the new value for <code>{key_map[key]}</code>:"), reply_markup=cancel_kb)
             answer_callback(call["id"])
 
@@ -4790,7 +4790,7 @@ def handle_callback(call):
             full_name = req_data.get("full_name", u_id)
             
             if action == "APPROVE" and len(num) >= 7:
-                masked_num = f"{num[:4]}❖DXA❖{num[-3:]}"
+                masked_num = f"{num[:4]}❖MAX❖{num[-3:]}"
             else:
                 masked_num = num
             
